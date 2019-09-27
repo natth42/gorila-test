@@ -16,7 +16,7 @@ const InvestmentForm = () => {
     console.log(`send values: ✨${JSON.stringify(values)}✨`);
   }
 
-  const formatNumber = value => 'R$' + value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const formatNumber = value => value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
     <div className="form-position">
@@ -28,7 +28,7 @@ const InvestmentForm = () => {
           <option value="rendaVariavel">Renda Variável</option>
         </select>
         <input className="input" type="text" placeholder="valor" value={formatNumber(values.value)} onChange={handleChange('value')} />
-        <input className="input" type="date" placeholder="data de compra" value={values.date} onChange={handleChange('date')} />
+        <input className="input" type="date" placeholder="data de compra: " value={values.date} onChange={handleChange('date')} />
         <button type="submit">🐵</button>
       </form>  
     </div>
