@@ -1,5 +1,39 @@
-.center-text {
-  text-align: center
+button {
+  background-color: #fff;
+  border: 1px solid #333;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.5em;
+  margin: 0.5rem;
+  cursor: pointer;
 }
 
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.input {
+  width: 10rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid #000;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.form-position{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-aligment{
+  display: flex
+}
 
