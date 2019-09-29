@@ -1,7 +1,7 @@
 import React from 'react';
 import InvestmentForm from './components/investmentForm';
 import InvestmentList from './components/investmentList';
-import { ResponsivePie } from '@nivo/pie'
+import { ResponsivePie } from '@nivo/pie';
 import './App.css';
 
 function App() {

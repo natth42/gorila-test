@@ -5,7 +5,7 @@ const InvestmentList = ({type}) => {
         <>
             <h3>{type}</h3>
             <ul>
-                <ol>💰 [2019-09-27] R$1.000,00</ol>
+                <ol> [2019-09-27] R$1.000,00</ol>
             </ul>
         </>
     )

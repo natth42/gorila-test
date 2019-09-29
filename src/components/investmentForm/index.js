@@ -29,7 +29,7 @@ const InvestmentForm = () => {
         </select>
         <input className="input" type="text" placeholder="valor" value={formatNumber(values.value)} onChange={handleChange('value')} />
         <input className="input" type="date" placeholder="data de compra: " value={values.date} onChange={handleChange('date')} />
-        <button type="submit">🐵</button>
+        <button type="submit">+</button>
       </form>  
     </div>
   )
