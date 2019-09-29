@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import InvestmentForm from './components/investmentForm';
 import InvestmentList from './components/investmentList';
 import { ResponsivePie } from '@nivo/pie';
+import { useInvestmentDispatch, getInvestments } from './context/investment-context';
 import './App.css';
 
 function App() {
+  const dispatch = useInvestmentDispatch();
   const data = [
     {
       "id": "Renda fixa",
@@ -19,6 +21,10 @@ function App() {
       "color": "#10C0C6"
     },
   ];
+
+  useEffect(() => {
+    getInvestments(dispatch)
+  });
 
   return (
     <>

@@ -32,7 +32,15 @@ function InvestmentReducer(listItems, action) {
   }
 
   function getInvestments(dispatch) {
-
+    fetch("https://gorila-api.herokuapp.com/investments")
+    .then(response => response.json()) // retorna uma promise
+    .then(result => {
+      console.log(result);
+    })
+    .catch(err => {
+      // trata se alguma das promises falhar
+      console.error('Failed retrieving information', err);
+    });
   }
   
   function removeInvestment(dispatch, id) {
