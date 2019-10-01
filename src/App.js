@@ -1,30 +1,37 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import InvestmentForm from './components/investmentForm';
 import InvestmentList from './components/investmentList';
 import { ResponsivePie } from '@nivo/pie';
-import { useInvestmentDispatch, getInvestments } from './context/investment-context';
+import { useInvestmentDispatch, useInvestmentState, getInvestments } from './context/investment-context';
 import './App.css';
 
 function App() {
   const dispatch = useInvestmentDispatch();
-  const data = [
-    {
-      "id": "Renda fixa",
-      "label": "Renda fixa",
-      "value": 100,
-      "color": "#10C0C6"
-    },
-    {
-      "id": "Renda variável",
-      "label": "Renda Variável",
-      "value": 150,
-      "color": "#10C0C6"
-    },
-  ];
+  const dados = useInvestmentState();
+  const [graphData, setGraphData] = useState([]);
+
+  const getNumber = (value) => {
+    return Number(value.replace('.', '').replace(',', '.'))
+  }
+
+  function formatDataForGraphComponent(investments) {
+    if(investments && investments.length > 0){
+      return [
+          {id: "Renda fixa", label: "Renda fixa", value: investments.reduce( ( sum , cur ) =>  cur.type === 'RENDA_FIXA'? sum + getNumber(cur.value) : sum , 0)},
+          {id: "Renda variável", label: "Renda variável", value: investments.reduce( ( sum , cur ) =>  cur.type === 'RENDA_VARIAVEL'? sum + getNumber(cur.value) : sum , 0)}
+      ]
+    }else {
+      return []
+    }
+  }
+
+  useEffect(() => {
+    setGraphData(dados.investments)
+  }, [dados.investments])
 
   useEffect(() => {
     getInvestments(dispatch)
-  });
+  }, [dispatch]);
 
   return (
     <>
@@ -32,16 +39,19 @@ function App() {
       <InvestmentForm />
       <div className="list-position">
         <div>
-          <InvestmentList type="Renda Fixa" />
+          <InvestmentList title="Renda Fixa" type="RENDA_FIXA" items={dados.investments} />
         </div>
         <div>
-          <InvestmentList type="Renda Fixa" />
+          <InvestmentList title="Renda Variável" type="RENDA_VARIAVEL" items={dados.investments} />
         </div>
       </div>
       <h3 className="center-text">Resumo da Carteira</h3>
       <div className="charts">
+      { 
+        (graphData && graphData.length > 0)
+        &&       
         <ResponsivePie
-            data={data}
+            data={formatDataForGraphComponent(graphData)}
             margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
             colors={["#10C0C6", "#50df8f"]}
             borderWidth={1}
@@ -79,7 +89,8 @@ function App() {
                     ]
                 }
             ]}
-        />
+          />
+        }
       </div>
     </>
   );

@@ -3,19 +3,19 @@ import React, {createContext, useContext, useReducer} from 'react'
 const InvestmentStateContext = createContext()
 const InvestmentDispatchContext = createContext()
 
-function InvestmentReducer(listItems, action) {
+function InvestmentReducer(state, action) {
+  if(action.type === 'add'){
+    console.log({...state, investments: state.investments.concat(action.newInvestment)}, 'result');
+  }
     switch (action.type) {
       case 'get': {
-        return [action.listItem]
+        return {...state, investments: action.investments}
       }
       case 'add': {
-        return [...listItems, action.listItem]
-      }
-      case 'remove': {
-        return listItems.filter(li => li.id !== action.id)
+        return {...state, investments: state.investments.concat(action.newInvestment)}
       }
       default: {
-        throw new Error(`Unhandled action type: ${action.type}`)
+        return {...state, investments: []}
       }
     }
   }
@@ -35,10 +35,9 @@ function InvestmentReducer(listItems, action) {
     fetch("https://gorila-api.herokuapp.com/investments")
     .then(response => response.json()) // retorna uma promise
     .then(result => {
-      console.log(result);
+      dispatch({type: 'get', investments: result})
     })
     .catch(err => {
-      // trata se alguma das promises falhar
       console.error('Failed retrieving information', err);
     });
   }
@@ -48,7 +47,21 @@ function InvestmentReducer(listItems, action) {
   }
   
   function addInvestment(dispatch, payload) {
-
+    fetch('https://gorila-api.herokuapp.com/investments', {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: payload
+    })
+    .then(response => response.json()) // retorna uma promise
+    .then(result => {
+      console.log(result);
+      dispatch({type: 'add', newInvestment: [result]})
+    })
+    .catch(err => {
+      console.error('Failed retrieving information', err);
+    });
   }
   
   function useInvestmentDispatch() {

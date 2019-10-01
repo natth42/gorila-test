@@ -1,11 +1,17 @@
 import React from 'react';
 
-const InvestmentList = ({type}) => {
+const InvestmentList = ({title, type, items}) => {
+    const listItems = items ? items.filter((item) => item.type === type) : [];
+    const formatDate = (date) => new Date(date).toLocaleDateString();
     return (
         <>
-            <h3>{type}</h3>
+            <h3>{title}</h3>
             <ul>
-                <ol> [2019-09-27] R$1.000,00</ol>
+                {
+                    listItems.map((listItem) => (
+                        <ol key={listItem._id}> [{formatDate(listItem.date)}] R${listItem.value}</ol>
+                    ))
+                }
             </ul>
         </>
     )

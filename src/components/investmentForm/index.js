@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 
+import { useInvestmentDispatch, addInvestment } from '../../context/investment-context';
+
 const InvestmentForm = () => {
-  const [values, setValues] = useState({
+  const initialValues = {
     type: '',
     value: '',
     date: ''
-  });
+  };
+  const dispatch = useInvestmentDispatch();
+  const [values, setValues] = useState(initialValues);
 
   const handleChange = name => e => {
     setValues({...values, [name]: e.target.value});
@@ -13,10 +17,24 @@ const InvestmentForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(`send values: ✨${JSON.stringify(values)}✨`);
+    addInvestment(dispatch, JSON.stringify(values));
+    setValues(initialValues);
   }
 
-  const formatNumber = value => value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const formatNumber = e => {
+    if(e.target.value === '')
+      e.target.value = 0
+    let valor = e.target.value + '';
+    valor = parseInt(valor.replace(/[\D]+/g,''));
+    valor = valor + '';
+    valor = valor.replace(/([0-9]{2})$/g, ",$1");
+  
+    if (valor.length > 6) {
+      valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+  
+    setValues({...values, value: valor});
+  };
 
   return (
     <div className="form-position">
@@ -24,10 +42,10 @@ const InvestmentForm = () => {
       <form className="form-aligment" onSubmit={handleSubmit}>
         <select className="input" value={values.type} onChange={handleChange('type')}>
           <option>Tipo</option>
-          <option value="rendaFixa">Renda Fixa</option>
-          <option value="rendaVariavel">Renda Variável</option>
+          <option value="RENDA_FIXA">Renda Fixa</option>
+          <option value="RENDA_VARIAVEL">Renda Variável</option>
         </select>
-        <input className="input" type="text" placeholder="valor" value={formatNumber(values.value)} onChange={handleChange('value')} />
+        <input className="input" type="text" placeholder="valor" value={values.value} onChange={formatNumber} />
         <input className="input" type="date" placeholder="data de compra: " value={values.date} onChange={handleChange('date')} />
         <button type="submit">+</button>
       </form>  
