@@ -50,8 +50,13 @@ ul, ol {
   align-items: center;
 }
 
+.flex-aligment{
+  display: flex;
+  align-items: center;
+}
+
 .form-aligment{
-  display: flex
+  display: flex;
 }
 
 .list-position{

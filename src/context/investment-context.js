@@ -4,15 +4,15 @@ const InvestmentStateContext = createContext()
 const InvestmentDispatchContext = createContext()
 
 function InvestmentReducer(state, action) {
-  if(action.type === 'add'){
-    console.log({...state, investments: state.investments.concat(action.newInvestment)}, 'result');
-  }
     switch (action.type) {
       case 'get': {
         return {...state, investments: action.investments}
       }
       case 'add': {
         return {...state, investments: state.investments.concat(action.newInvestment)}
+      }
+      case 'remove': {
+        return {...state, investments: state.investments.filter((item) => item._id !== action.id)}
       }
       default: {
         return {...state, investments: []}
@@ -33,7 +33,7 @@ function InvestmentReducer(state, action) {
 
   function getInvestments(dispatch) {
     fetch("https://gorila-api.herokuapp.com/investments")
-    .then(response => response.json()) // retorna uma promise
+    .then(response => response.json()) 
     .then(result => {
       dispatch({type: 'get', investments: result})
     })
@@ -43,7 +43,14 @@ function InvestmentReducer(state, action) {
   }
   
   function removeInvestment(dispatch, id) {
-
+    fetch(`https://gorila-api.herokuapp.com/investments/${id}`, {method: 'DELETE'})
+    .then(response => response.json()) 
+    .then(result => {
+      dispatch({type: 'remove', id})
+    })
+    .catch(err => {
+      console.error('Failed retrieving information', err);
+    });
   }
   
   function addInvestment(dispatch, payload) {
