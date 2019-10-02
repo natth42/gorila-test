@@ -1,5 +1,7 @@
 import React, {createContext, useContext, useReducer} from 'react'
 
+import getEnvPath from '../utils/env';
+
 const InvestmentStateContext = createContext()
 const InvestmentDispatchContext = createContext()
 
@@ -32,7 +34,7 @@ function InvestmentReducer(state, action) {
   }
 
   function getInvestments(dispatch) {
-    fetch("https://gorila-api.herokuapp.com/investments")
+    fetch(`${getEnvPath}/investments`)
     .then(response => response.json()) 
     .then(result => {
       dispatch({type: 'get', investments: result})
@@ -43,7 +45,7 @@ function InvestmentReducer(state, action) {
   }
   
   function removeInvestment(dispatch, id) {
-    fetch(`https://gorila-api.herokuapp.com/investments/${id}`, {method: 'DELETE'})
+    fetch(`${getEnvPath}/investments/${id}`, {method: 'DELETE'})
     .then(response => response.json()) 
     .then(result => {
       dispatch({type: 'remove', id})
@@ -54,14 +56,14 @@ function InvestmentReducer(state, action) {
   }
   
   function addInvestment(dispatch, payload) {
-    fetch('https://gorila-api.herokuapp.com/investments', {
+    fetch(`${getEnvPath}/investments`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
       body: payload
     })
-    .then(response => response.json()) // retorna uma promise
+    .then(response => response.json())
     .then(result => {
       console.log(result);
       dispatch({type: 'add', newInvestment: [result]})
