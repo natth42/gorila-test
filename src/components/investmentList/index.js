@@ -10,7 +10,7 @@ const InvestmentList = ({title, type, items}) => {
             <ul>
                 {
                     listItems.map((listItem) => (
-                        <InvestmentListItem item={listItem} />
+                        <InvestmentListItem key={listItem._id} item={listItem} />
                     ))
                 }
             </ul>

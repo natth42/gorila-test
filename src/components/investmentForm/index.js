@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import {formatStringToCurrency} from '../../utils/formatValues';
 import { useInvestmentDispatch, addInvestment } from '../../context/investment-context';
 
 const InvestmentForm = () => {
@@ -21,19 +21,8 @@ const InvestmentForm = () => {
     setValues(initialValues);
   }
 
-  const formatNumber = e => {
-    if(e.target.value === '')
-      e.target.value = 0
-    let valor = e.target.value + '';
-    valor = parseInt(valor.replace(/[\D]+/g,''));
-    valor = valor + '';
-    valor = valor.replace(/([0-9]{2})$/g, ",$1");
-  
-    if (valor.length > 6) {
-      valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    }
-  
-    setValues({...values, value: valor});
+  const handleCurrencyChange = e => {  
+    setValues({...values, value: formatStringToCurrency(e.target.value)});
   };
 
   return (
@@ -45,7 +34,7 @@ const InvestmentForm = () => {
           <option value="RENDA_FIXA">Renda Fixa</option>
           <option value="RENDA_VARIAVEL">Renda Variável</option>
         </select>
-        <input className="input" type="text" placeholder="valor" value={values.value} onChange={formatNumber} />
+        <input className="input" type="text" placeholder="valor" value={values.value} onChange={handleCurrencyChange} />
         <input className="input" type="date" placeholder="data de compra: " value={values.date} onChange={handleChange('date')} />
         <button type="submit">+</button>
       </form>  

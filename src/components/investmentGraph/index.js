@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { ResponsivePie } from '@nivo/pie';
+import {formatStringToNumber} from '../../utils/formatValues';
 
 const InvestmentGraph = ({investments}) => {
   const [graphData, setGraphData] = useState([]);
@@ -8,19 +9,20 @@ const InvestmentGraph = ({investments}) => {
     setGraphData(investments)
   }, [investments]);
 
-  const getNumber = (value) => {
-    return Number(value.replace('.', '').replace(',', '.'))
+  const getPercentageByInvestmentType = (type, total, investments) => {
+    return (100 * investments.reduce((sum, cur) => cur.type === type ? sum + formatStringToNumber(cur.value) : sum, 0)) / total;
   }
 
   function formatDataForGraphComponent(investments) {
     if (investments && investments.length > 0) {
+      const total = investments.reduce((sum, cur) => sum + formatStringToNumber(cur.value), 0);
       return [
-        { id: "Renda fixa", label: "Renda fixa", value: investments.reduce((sum, cur) => cur.type === 'RENDA_FIXA' ? sum + getNumber(cur.value) : sum, 0) },
-        { id: "Renda variável", label: "Renda variável", value: investments.reduce((sum, cur) => cur.type === 'RENDA_VARIAVEL' ? sum + getNumber(cur.value) : sum, 0) }
-      ]
-    } else {
-      return []
-    }
+        { id: "Renda fixa", label: "Renda fixa", value: getPercentageByInvestmentType('RENDA_FIXA', total, investments) },
+        { id: "Renda variável", label: "Renda variável", value: getPercentageByInvestmentType('RENDA_VARIAVEL', total, investments) }
+      ];
+    } 
+
+    return [];
   }
 
   return (
@@ -42,6 +44,8 @@ const InvestmentGraph = ({investments}) => {
           radialLabelsLinkHorizontalLength={24}
           radialLabelsLinkStrokeWidth={1}
           radialLabelsLinkColor={{ from: 'color' }}
+          isInteractive={false}
+          sliceLabel={({value}) => `${value}%`}
           slicesLabelsSkipAngle={10}
           slicesLabelsTextColor="#333333"
           animate={true}
