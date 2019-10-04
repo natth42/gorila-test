@@ -31,7 +31,6 @@ const InvestmentForm = () => {
   };
   const dispatch = useInvestmentDispatch();
   const [values, setValues] = useState(initialValues);
-  console.log('aaah');
   const handleChange = name => e => {
     setValues({...values, [name]: e.target.value});
   }
@@ -86,7 +85,12 @@ const InvestmentForm = () => {
           />
         </Grid>
         <Grid item xs={12} sm={1} md={1}>
-          <Button type="submit" variant="outlined" className="addButton">
+          <Button 
+            type="submit" 
+            variant="outlined" 
+            className="addButton"
+            disabled={values.type === '' || values.value === '' || values.date === ''}
+          >
             ADICIONAR
           </Button>
         </Grid>

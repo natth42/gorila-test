@@ -38,7 +38,7 @@ function App() {
             </Paper>
           </Grid>
           <Grid item className="item">
-            <Grid container direction="row" justify="space-between" alignItems="center" spacing={3}>
+            <Grid container direction="row" justify="space-between" alignItems="flex-start" spacing={3}>
               <Grid item className="itemList" sm={6} xs={12} md={6}>
                 <InvestmentList title="Renda Fixa" type="RENDA_FIXA" items={dados.investments} />
               </Grid>
