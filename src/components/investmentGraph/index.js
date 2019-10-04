@@ -45,6 +45,7 @@ const InvestmentGraph = ({investments}) => {
           radialLabelsLinkStrokeWidth={1}
           radialLabelsLinkColor={{ from: 'color' }}
           isInteractive={false}
+          enableRadialLabels={false}
           sliceLabel={({value}) => `${value}%`}
           slicesLabelsSkipAngle={10}
           slicesLabelsTextColor="#333333"

@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(207, 207, 207, 0.31)
+}
+
 button {
   background-color: #fff;
   border: 1px solid #333;
@@ -31,37 +35,30 @@ ul, ol {
   padding: 0rem;
 }
 
+.select-input{
+  width: 10rem;
+}
+
 .input {
   width: 10rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border: 1px solid #000;
 }
 
 .center-text {
   text-align: center;
 }
 
-.form-position{
+.flex-aligment{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.flex-aligment{
-  display: flex;
-  align-items: center;
-}
-
-.form-aligment{
-  display: flex;
+  border-bottom: 1px #e4e5ef solid;
+  height: 4rem;
 }
 
 .list-position{
   display: flex;
   justify-content: space-evenly;
+  width: 98.5%;
 }
 
 .charts{
@@ -69,3 +66,52 @@ ul, ol {
   height: 400px;
 }
 
+.paper{
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+button[type="submit"]{
+  border-radius: 20rem;
+  width: auto;
+  height: auto;
+  color: #fff;
+  border: none;
+  background-image: linear-gradient(270deg,#5be484 0,#10c0c6 100%);
+  margin-top: 1rem;
+}
+
+.paper-list{
+  width: 48%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.paper-form{
+  margin-top: 1rem;
+}
+
+.paper-graph{
+  margin-top: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paper-content{
+  padding: 1rem;
+}
+
+.date-list-item{
+  color: #9e9ea0;
+  margin-right: 0.5rem;
+}
+
+.line{
+  height: 3px;
+  width: 100%;
+  background-image: linear-gradient(90deg,#10c0c6,#4dde90)
+}
+
+.item{
+  width: 100%;
+}
