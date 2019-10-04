@@ -10,7 +10,7 @@ const InvestmentGraph = ({investments}) => {
   }, [investments]);
 
   const getPercentageByInvestmentType = (type, total, investments) => {
-    return (100 * investments.reduce((sum, cur) => cur.type === type ? sum + formatStringToNumber(cur.value) : sum, 0)) / total;
+    return ((100 * investments.reduce((sum, cur) => cur.type === type ? sum + formatStringToNumber(cur.value) : sum, 0)) / total).toFixed(2);
   }
 
   function formatDataForGraphComponent(investments) {
