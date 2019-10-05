@@ -17,11 +17,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: '0.5rem'
   },
   labelDate: {
-    fontSize: '0.75rem'
+    fontSize: '0.75rem',
+    marginTop: '0.5rem'
   },
   textField: {
     width: '80%',
-    marginTop: '0.5rem'
+    marginTop: '0.2rem'
   }
 }));
 
