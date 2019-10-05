@@ -14,11 +14,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   formControl: {
     width: '80%',
-    marginTop: '2rem'
+    marginTop: '0.5rem'
+  },
+  labelDate: {
+    fontSize: '0.75rem'
   },
   textField: {
     width: '80%',
-    marginTop: '2rem'
+    marginTop: '0.5rem'
   }
 }));
 
@@ -73,15 +76,15 @@ const InvestmentForm = () => {
           />
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
+          <InputLabel htmlFor="date" className={classes.labelDate}>Data de compra</InputLabel>
           <TextField
-            label="data de compra"
             value={values.date}
             className={classes.textField}
             type="date"
-            InputLabelProps={{
-              shrink: true,
-            }}
             onChange={handleChange('date')}
+            inputProps={{
+              id: 'date',
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={1} md={1}>
