@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(207, 207, 207, 0.31)
+  background-color: #F1F1F1
 }
 
 button {
@@ -35,30 +35,12 @@ ul, ol {
   padding: 0rem;
 }
 
-.select-input{
-  width: 10rem;
-}
-
-.input {
-  width: 10rem;
-}
-
-.center-text {
-  text-align: center;
-}
-
 .flex-aligment{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px #e4e5ef solid;
   height: 4rem;
-}
-
-.list-position{
-  display: flex;
-  justify-content: space-evenly;
-  width: 98.5%;
 }
 
 .charts{
@@ -82,14 +64,8 @@ button[type="submit"]{
 }
 
 button[type="submit"]:disabled{
-  background-color: rgba(207, 207, 207, 0.31);
+  background-color: #F1F1F1;
   background-image: none;
-}
-
-.paper-list{
-  width: 48%;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .paper-form{
@@ -107,7 +83,7 @@ button[type="submit"]:disabled{
 }
 
 .date-list-item{
-  color: #9e9ea0;
+  color: #888E8E;
   margin-right: 0.5rem;
 }
 

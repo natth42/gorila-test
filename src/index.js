@@ -5,7 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { InvestmentProvider } from './context/investment-context';
 
-ReactDOM.render(<InvestmentProvider><App /></InvestmentProvider>, document.getElementById('root'));
+const Root = () => {
+    return (
+        <InvestmentProvider>
+            <App />
+        </InvestmentProvider>
+    )
+}
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -14,11 +14,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   formControl: {
     width: '80%',
-    marginTop: '0.5rem'
+    marginTop: '0.8rem'
   },
   textField: {
     width: '80%',
-    marginTop: '0.5rem'
+    marginTop: '0.8rem'
   }
 }));
 

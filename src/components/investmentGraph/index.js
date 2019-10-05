@@ -33,7 +33,7 @@ const InvestmentGraph = ({investments}) => {
         <ResponsivePie
           data={formatDataForGraphComponent(graphData)}
           margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-          colors={["#10C0C6", "#50df8f"]}
+          colors={["#815ae8", "#ed4581"]}
           borderWidth={1}
           borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
           radialLabelsSkipAngle={10}
@@ -46,9 +46,10 @@ const InvestmentGraph = ({investments}) => {
           radialLabelsLinkColor={{ from: 'color' }}
           isInteractive={false}
           enableRadialLabels={false}
-          sliceLabel={({value}) => `${value}%`}
+          startAngle={-180}
+          sliceLabel={({id, value}) => `${value}%`}
           slicesLabelsSkipAngle={10}
-          slicesLabelsTextColor="#333333"
+          slicesLabelsTextColor="#FFF"
           animate={true}
           motionStiffness={90}
           motionDamping={15}
