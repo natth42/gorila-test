@@ -48,10 +48,7 @@ function App() {
             </Grid>
           </Grid>
           <Grid item className="item">
-            <Paper className="paper-graph">
-              <h3>Resumo da Carteira</h3>
-              <InvestmentGraph investments={dados.investments} />
-            </Paper>
+            <InvestmentGraph investments={dados.investments} />
           </Grid>
         </Grid>
       </ Container>

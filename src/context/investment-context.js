@@ -8,7 +8,10 @@ const InvestmentDispatchContext = createContext()
 function InvestmentReducer(state, action) {
     switch (action.type) {
       case 'get': {
-        return {...state, investments: action.investments}
+        return {...state, investments: [], loading: true}
+      }
+      case 'get_success': {
+        return {...state, investments: action.investments, loading: false}
       }
       case 'add': {
         return {...state, investments: state.investments.concat(action.newInvestment)}
@@ -34,10 +37,12 @@ function InvestmentReducer(state, action) {
   }
 
   function getInvestments(dispatch) {
+    dispatch({type: 'get'});
+
     fetch(`${getEnvPath}/investments`)
     .then(response => response.json()) 
     .then(result => {
-      dispatch({type: 'get', investments: result})
+      dispatch({type: 'get_success', investments: result});
     })
     .catch(err => {
       console.error('Failed retrieving information', err);

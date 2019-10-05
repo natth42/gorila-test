@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { ResponsivePie } from '@nivo/pie';
 import {formatStringToNumber} from '../../utils/formatValues';
+import Skeleton from '@material-ui/lab/Skeleton';
+import Paper from '@material-ui/core/Paper';
 
 const InvestmentGraph = ({investments}) => {
   const [graphData, setGraphData] = useState([]);
@@ -26,56 +28,63 @@ const InvestmentGraph = ({investments}) => {
   }
 
   return (
-    <div className="charts">
+    <>
       {
         (graphData && graphData.length > 0)
-        &&
-        <ResponsivePie
-          data={formatDataForGraphComponent(graphData)}
-          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-          colors={["#815ae8", "#ed4581"]}
-          borderWidth={1}
-          borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
-          radialLabelsSkipAngle={10}
-          radialLabelsTextXOffset={6}
-          radialLabelsTextColor="#333333"
-          radialLabelsLinkOffset={0}
-          radialLabelsLinkDiagonalLength={16}
-          radialLabelsLinkHorizontalLength={24}
-          radialLabelsLinkStrokeWidth={1}
-          radialLabelsLinkColor={{ from: 'color' }}
-          isInteractive={false}
-          enableRadialLabels={false}
-          startAngle={-180}
-          sliceLabel={({id, value}) => `${value}%`}
-          slicesLabelsSkipAngle={10}
-          slicesLabelsTextColor="#FFF"
-          animate={true}
-          motionStiffness={90}
-          motionDamping={15}
-          legends={[
-            {
-              anchor: 'bottom',
-              direction: 'row',
-              translateY: 56,
-              itemWidth: 100,
-              itemHeight: 18,
-              itemTextColor: '#999',
-              symbolSize: 18,
-              symbolShape: 'circle',
-              effects: [
+        ?
+        <Paper className="paper-graph">
+          <h3>Resumo da Carteira</h3>
+          <div className="charts">
+            <ResponsivePie
+              data={formatDataForGraphComponent(graphData)}
+              margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+              colors={["#815ae8", "#ed4581"]}
+              borderWidth={1}
+              borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+              radialLabelsSkipAngle={10}
+              radialLabelsTextXOffset={6}
+              radialLabelsTextColor="#333333"
+              radialLabelsLinkOffset={0}
+              radialLabelsLinkDiagonalLength={16}
+              radialLabelsLinkHorizontalLength={24}
+              radialLabelsLinkStrokeWidth={1}
+              radialLabelsLinkColor={{ from: 'color' }}
+              isInteractive={false}
+              enableRadialLabels={false}
+              startAngle={-180}
+              sliceLabel={({ id, value }) => `${value}%`}
+              slicesLabelsSkipAngle={10}
+              slicesLabelsTextColor="#FFF"
+              animate={true}
+              motionStiffness={90}
+              motionDamping={15}
+              legends={[
                 {
-                  on: 'hover',
-                  style: {
-                    itemTextColor: '#000'
-                  }
+                  anchor: 'bottom',
+                  direction: 'row',
+                  translateY: 56,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  itemTextColor: '#999',
+                  symbolSize: 18,
+                  symbolShape: 'circle',
+                  effects: [
+                    {
+                      on: 'hover',
+                      style: {
+                        itemTextColor: '#000'
+                      }
+                    }
+                  ]
                 }
-              ]
-            }
-          ]}
-        />
+              ]}
+            />
+          </div>
+        </Paper>
+        :
+        <Skeleton height="400px" />
       }
-    </div>
+    </>
   )
 }
 
