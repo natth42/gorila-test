@@ -21,4 +21,4 @@ A construção da aplicação foi feita com base no create-react-app (https://gi
 Rode o comando 'npm start' no seu terminal para rodar o projeto na sua máquina e abra o seu navegador no endereço:  http://localhost:3000 
 
 ### Rodar testes de sua aplicação
-Rode o comando 'npm test'
+Rode o comando 'npm test' para ver os testes feitos e 'npm coverage' para visualizar a quantidade de coverage de código
