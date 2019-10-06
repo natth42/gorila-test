@@ -5,7 +5,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 
 const InvestmentList = ({title, type, items}) => {
     const listItems = items ? items.filter((item) => item.type === type) : [];
-    console.log(listItems, 'listItem');
+
     return (
         <>
         {

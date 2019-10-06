@@ -61,6 +61,7 @@ const InvestmentForm = () => {
               inputProps={{
                 name: 'value_type',
                 id: 'type',
+                "data-testid": 'type'
               }}
             >
               <MenuItem value={"RENDA_FIXA"}>Renda Fixa</MenuItem>
@@ -73,6 +74,9 @@ const InvestmentForm = () => {
             label="valor"
             className={classes.textField}
             value={values.value}
+            inputProps={{
+              "data-testid": 'valor'
+            }}
             onChange={handleCurrencyChange}
           />
         </Grid>
@@ -85,6 +89,7 @@ const InvestmentForm = () => {
             onChange={handleChange('date')}
             inputProps={{
               id: 'date',
+              "data-testid": 'data de compra'
             }}
           />
         </Grid>
@@ -93,6 +98,7 @@ const InvestmentForm = () => {
             type="submit" 
             variant="outlined" 
             className="addButton"
+            data-testid="adicionar"
             disabled={values.type === '' || values.value === '' || values.date === ''}
           >
             ADICIONAR
