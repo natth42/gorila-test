@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
-import {InvestmentProvider} from '../../context/investment-context';
-import InvestmentForm from './index';
-import expectExport from 'expect';
+import {InvestmentProvider} from '../context/investment-context';
+import InvestmentForm from '../components/investmentForm/index';
+import '@testing-library/jest-dom/extend-expect';
 
 test('change values and send form', () => {
     const {getByTestId} = render(
@@ -19,11 +19,11 @@ test('change values and send form', () => {
     expect(typeSelect.textContent).toEqual('');
 
     fireEvent.change(valueInput, {target: {value: '100000'}});
-    fireEvent.change(dateInput, {target: {value: '05/10/2019'}});
+    fireEvent.change(dateInput, {target: {value: '2019-10-05'}});
     fireEvent.change(typeSelect, {target: {value: 'RENDA_FIXA'}});
 
     expect(valueInput.value).toEqual('1.000,00');
-    expect(dateInput.value).toEqual('05/10/2019');
+    expect(dateInput.value).toEqual('2019-10-05');
     expect(typeSelect.value).toEqual('RENDA_FIXA');
 
     fireEvent.click(addButton);

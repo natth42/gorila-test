@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {InvestmentProvider} from './context/investment-context';
+import App from '../App';
+import {InvestmentProvider} from '../context/investment-context';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
