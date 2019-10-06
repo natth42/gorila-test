@@ -3,7 +3,7 @@ const formatDate = (date) => new Date(date).toLocaleDateString();
 const formatStringToNumber = (value) => Number(value.replace('.', '').replace(',', '.'));
 
 const formatStringToCurrency = value => {
-    if(value === '')
+    if(value.replace(/[^0-9]/g, '') === '')
         value = 0
     let formatedValue = value + '';
     formatedValue = parseInt(formatedValue.replace(/[\D]+/g,''));
