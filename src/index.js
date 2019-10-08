@@ -6,11 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import { InvestmentProvider } from './context/investment-context';
 
 const Root = () => {
-    return (
-        <InvestmentProvider>
-            <App />
-        </InvestmentProvider>
-    )
+  return (
+    <InvestmentProvider>
+      <App />
+    </InvestmentProvider>
+  )
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));

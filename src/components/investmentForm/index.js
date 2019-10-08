@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {formatStringToCurrency} from '../../utils/formatValues';
+import React, { useState } from 'react';
+import { formatStringToCurrency } from '../../utils/formatValues';
 import { useInvestmentDispatch, addInvestment } from '../../context/investment-context';
 
 import Button from '@material-ui/core/Button';
@@ -23,6 +23,19 @@ const useStyles = makeStyles(theme => ({
   textField: {
     width: '80%',
     marginTop: '0.2rem'
+  },
+  button: {
+    borderRadius: '20rem',
+    width: 'auto',
+    height: 'auto',
+    color: '#fff',
+    border: 'none',
+    backgroundImage: 'linear-gradient(270deg,#5be484 0,#10c0c6 100%)',
+    marginTop: '1rem',
+    '&:disabled': {
+      backgroundColor: '#F1F1F1',
+      backgroundImage: 'none'
+    }
   }
 }));
 
@@ -36,7 +49,7 @@ const InvestmentForm = () => {
   const dispatch = useInvestmentDispatch();
   const [values, setValues] = useState(initialValues);
   const handleChange = name => e => {
-    setValues({...values, [name]: e.target.value});
+    setValues({ ...values, [name]: e.target.value });
   }
 
   const handleSubmit = e => {
@@ -45,8 +58,8 @@ const InvestmentForm = () => {
     setValues(initialValues);
   }
 
-  const handleCurrencyChange = e => {  
-    setValues({...values, value: formatStringToCurrency(e.target.value)});
+  const handleCurrencyChange = e => {
+    setValues({ ...values, value: formatStringToCurrency(e.target.value) });
   };
 
   return (
@@ -94,18 +107,18 @@ const InvestmentForm = () => {
           />
         </Grid>
         <Grid item xs={12} sm={1} md={1}>
-          <Button 
-            type="submit" 
-            variant="outlined" 
-            className="addButton"
+          <Button
+            type="submit"
+            variant="outlined"
+            className={classes.button}
             data-testid="adicionar"
             disabled={values.type === '' || values.value === '' || values.date === ''}
           >
             ADICIONAR
           </Button>
         </Grid>
-      </Grid>  
-    </form>  
+      </Grid>
+    </form>
   )
 }
 

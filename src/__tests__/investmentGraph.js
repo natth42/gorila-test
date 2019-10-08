@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import InvestmentGraph from '../components/investmentGraph';
-import {InvestmentProvider} from '../context/investment-context';
+import { InvestmentProvider } from '../context/investment-context';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
