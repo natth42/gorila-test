@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { ResponsivePie } from '@nivo/pie';
 import {formatStringToNumber} from '../../utils/formatValues';
+import {getPercentageByType, getSum} from '../../utils/calcs';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Paper from '@material-ui/core/Paper';
 
@@ -11,16 +12,12 @@ const InvestmentGraph = ({investments}) => {
     setGraphData(investments)
   }, [investments]);
 
-  const getPercentageByInvestmentType = (type, total, investments) => {
-    return Number(((100 * investments.reduce((sum, cur) => cur.type === type ? sum + formatStringToNumber(cur.value) : sum, 0)) / total).toFixed(2));
-  }
-
   function formatDataForGraphComponent(investments) {
     if (investments && investments.length > 0) {
-      const total = investments.reduce((sum, cur) => sum + formatStringToNumber(cur.value), 0);
+      const total = getSum(investments);
       return [
-        { id: "Renda fixa", label: "Renda fixa", value: getPercentageByInvestmentType('RENDA_FIXA', total, investments) },
-        { id: "Renda variável", label: "Renda variável", value: getPercentageByInvestmentType('RENDA_VARIAVEL', total, investments) }
+        { id: "Renda fixa", label: "Renda fixa", value: getPercentageByType('RENDA_FIXA', total, investments) },
+        { id: "Renda variável", label: "Renda variável", value: getPercentageByType('RENDA_VARIAVEL', total, investments) }
       ];
     } 
 

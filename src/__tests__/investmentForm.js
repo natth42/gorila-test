@@ -2,7 +2,6 @@ import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import {InvestmentProvider} from '../context/investment-context';
 import InvestmentForm from '../components/investmentForm/index';
-import '@testing-library/jest-dom/extend-expect';
 
 test('change values and send form', () => {
     const {getByTestId} = render(

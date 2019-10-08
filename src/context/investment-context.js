@@ -51,7 +51,6 @@ function InvestmentReducer(state, action) {
   
   function removeInvestment(dispatch, id) {
     fetch(`${getEnvPath}/investments/${id}`, {method: 'DELETE'})
-    .then(response => response.json()) 
     .then(result => {
       dispatch({type: 'remove', id})
     })
@@ -70,7 +69,6 @@ function InvestmentReducer(state, action) {
     })
     .then(response => response.json())
     .then(result => {
-      console.log(result);
       dispatch({type: 'add', newInvestment: [result]})
     })
     .catch(err => {
@@ -98,6 +96,7 @@ function InvestmentReducer(state, action) {
   
   export {
     InvestmentProvider,
+    InvestmentReducer,
     useInvestmentDispatch,
     useInvestmentState,
     getInvestments,

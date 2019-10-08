@@ -1,20 +1,15 @@
 const formatDate = (date) => new Date(date).toLocaleDateString();
 
-const formatStringToNumber = (value) => Number(value.replace('.', '').replace(',', '.'));
+const formatStringToNumber = (value = 0) => value.length > 0 ? parseFloat(value.replace(/\./g, '').replace(',', '.')) : 0;
 
-const formatStringToCurrency = value => {
-    if(value.replace(/[^0-9]/g, '') === '')
-        value = 0
-    let formatedValue = value + '';
-    formatedValue = parseInt(formatedValue.replace(/[\D]+/g,''));
-    formatedValue = formatedValue + '';
-    formatedValue = formatedValue.replace(/([0-9]{2})$/g, ",$1");
-  
-    if (formatedValue.length > 6) {
-        formatedValue = formatedValue.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    }
-  
-    return formatedValue;
+const formatStringToCurrency = (value = 0) => {
+    let formatedValue = value.replace(/\D/g,'');
+	formatedValue = (formatedValue/100).toFixed(2) + '';
+	formatedValue = formatedValue.replace(".", ",");
+	formatedValue = formatedValue.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+    formatedValue = formatedValue.replace(/(\d)(\d{3}),/g, "$1.$2,");
+    
+	return formatedValue;
 };
 
 export {formatDate, formatStringToNumber, formatStringToCurrency}
