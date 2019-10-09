@@ -2,8 +2,8 @@
 Aplicação feita para o teste de front end do Gorila Invest
 
 ### Aplicação
-A aplicação consiste em uma tela de investimentos que consiste em:
-* Cadastro de um investimento
+A aplicação tem uma tela de investimentos que consiste em:
+* Cadastrarm investimentos
 * Deletar Investimentos
 * Mostrar a porcentagem de investimentos em um gráfico
 
@@ -15,10 +15,10 @@ Para a construção foi utilizado:
 * Jest e Testing Library (ferramentas de teste)
 * Material UI (framework css visual para maior agilidade no desenvolvimento da interface)
 
-A construção da aplicação foi feita com base no create-react-app (https://github.com/facebook/create-react-app) por oferecer maior agilidade para se começar um projeto e a escolha das ferramentas foram feitas levando em consideração adesão da comunidade, facilidade de implementação, agilidade no desenvolvimento e recomendação do time de desenvolvimento do React.
+A construção da aplicação foi feita com base no create-react-app (https://github.com/facebook/create-react-app) por oferecer maior agilidade para se começar um novo projeto e a escolha das ferramentas foram feitas levando em consideração adesão da comunidade, facilidade de implementação, documentação e recomendação do time de desenvolvimento do React.
 
 ### Rodar aplicaçao Local
-Rode o comando 'npm start' no seu terminal para rodar o projeto na sua máquina e abra o seu navegador no endereço:  http://localhost:3000 
+Rode o comando 'npm start' no seu terminal para rodar o projeto na sua máquina e abra o seu navegador no endereço: http://localhost:3000 
 
 ### Rodar testes de sua aplicação
 Rode o comando 'npm test' para ver os testes feitos e 'npm coverage' para visualizar a quantidade de coverage de código
