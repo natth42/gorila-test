@@ -4,12 +4,26 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { InvestmentProvider } from './context/investment-context';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#10c0c6',
+      main: '#10c0c6',
+      dark: '#10c0c6'
+    }
+  },
+});
 
 const Root = () => {
   return (
-    <InvestmentProvider>
-      <App />
-    </InvestmentProvider>
+    <ThemeProvider theme={theme}>
+      <InvestmentProvider>
+        <App />
+      </InvestmentProvider>
+    </ThemeProvider>
   )
 }
 

@@ -71,6 +71,7 @@ const InvestmentForm = () => {
             <Select
               value={values.type}
               onChange={handleChange('type')}
+              color="primary"
               inputProps={{
                 name: 'value_type',
                 id: 'type',
@@ -85,6 +86,7 @@ const InvestmentForm = () => {
         <Grid item xs={12} sm={3} md={3} className={classes.inputItem}>
           <TextField
             label="valor"
+            color="primary"
             className={classes.textField}
             value={values.value}
             inputProps={{
@@ -97,6 +99,7 @@ const InvestmentForm = () => {
           <InputLabel htmlFor="date" className={classes.labelDate}>Data de compra</InputLabel>
           <TextField
             value={values.date}
+            color="primary"
             className={classes.textField}
             type="date"
             onChange={handleChange('date')}
