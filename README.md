@@ -3,7 +3,7 @@ Aplicação feita para o teste de front end do Gorila Invest
 
 ### Aplicação
 A aplicação tem uma tela de investimentos que consiste em:
-* Cadastrarm investimentos
+* Cadastrar investimentos
 * Deletar Investimentos
 * Mostrar a porcentagem de investimentos em um gráfico
 
