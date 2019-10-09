@@ -2,6 +2,13 @@ body {
   background-color: #F1F1F1
 }
 
+input[type="date"] {
+  margin: auto;
+  height: auto;
+  padding: 0px;
+  padding-bottom: 0.5rem;
+}
+
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;

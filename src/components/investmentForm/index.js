@@ -13,16 +13,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    width: '80%',
-    marginTop: '0.5rem'
+    width: '80%'
   },
   labelDate: {
-    fontSize: '0.75rem',
-    marginTop: '0.5rem'
+    fontSize: '0.75rem'
   },
   textField: {
-    width: '80%',
-    marginTop: '0.2rem'
+    width: '80%'
+  },
+  inputItem: {
+    marginTop: '1rem'
   },
   button: {
     borderRadius: '20rem',
@@ -65,7 +65,7 @@ const InvestmentForm = () => {
   return (
     <form className="form-aligment" onSubmit={handleSubmit}>
       <Grid container direction="row" justify="center" alignItems="flex-end">
-        <Grid item xs={12} sm={3} md={3}>
+        <Grid item xs={12} sm={3} md={3} className={classes.inputItem}>
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="type">Tipo</InputLabel>
             <Select
@@ -82,7 +82,7 @@ const InvestmentForm = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={3} md={3}>
+        <Grid item xs={12} sm={3} md={3} className={classes.inputItem}>
           <TextField
             label="valor"
             className={classes.textField}
@@ -93,7 +93,7 @@ const InvestmentForm = () => {
             onChange={handleCurrencyChange}
           />
         </Grid>
-        <Grid item xs={12} sm={3} md={3}>
+        <Grid item xs={12} sm={3} md={3} className={classes.inputItem}>
           <InputLabel htmlFor="date" className={classes.labelDate}>Data de compra</InputLabel>
           <TextField
             value={values.date}
